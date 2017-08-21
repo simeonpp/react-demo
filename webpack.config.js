@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    context: path.join(__dirname, 'src'),
+    context: path.resolve(__dirname, 'src'),
     devtool: debug ? 'inline-sourcemap' : false,
     entry: './js/client.js',
     module: {
@@ -32,8 +32,9 @@ module.exports = {
         ]
     },
     output: {
-        path: path.join(__dirname, '/src/'),
-        filename: 'client.min.js'
+        path: path.resolve(__dirname, '/src/'),
+        filename: 'client.min.js',
+        publicPath: '/'
     },
     plugins: debug ? [] : [
         new webpack.optimize.DedupePlugin(),
@@ -41,6 +42,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
     ],
     devServer: {
-      historyApiFallback: true,
+        historyApiFallback: true,
+        publicPath: '/'
     }
 };
