@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    context: path.join(__dirname, 'src'),
     devtool: debug ? 'inline-sourcemap' : false,
     entry: './js/client.js',
     module: {
@@ -32,7 +32,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, '/src/'),
+        path: path.join(__dirname, '/src/'),
         filename: 'client.min.js',
         publicPath: '/'
     },
